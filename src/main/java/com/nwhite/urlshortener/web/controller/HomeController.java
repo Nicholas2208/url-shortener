@@ -1,6 +1,6 @@
 package com.nwhite.urlshortener.web.controller;
 
-import com.nwhite.urlshortener.domain.entity.ShortUrl;
+import com.nwhite.urlshortener.domain.model.ShortUrlDto;
 import com.nwhite.urlshortener.domain.service.ShortUrlService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +18,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-        List<ShortUrl> shortUrls = shortUrlService.findAllPublicShortUrls();
+        List<ShortUrlDto> shortUrls = shortUrlService.findAllPublicShortUrls();
         model.addAttribute("shortUrls", shortUrls);
         model.addAttribute("baseUrl", "http://localhost:8080");
         return "index";
